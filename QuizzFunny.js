@@ -13,6 +13,11 @@ class Question {
     }
 
 }
+
+let sound = new Audio()
+let sound2 = new Audio()
+sound2.src = "Audio/vit.mp3"
+sound.src = "Audio/audio.mp3"
 let question1 = new Question(
     "Câu 1.Anh không muốn cưa em đổ, vì nhìn em ngã thì thương quá đi. Là câu hát nổi tiếng trong bài hát nào?",
     ["A.Anh nhà ở đâu thế", "B.Nhà anh ở đâu thế", "C.Em nhà ở đâu đấy", "D.Còn câu hỏi nào khó hơn không?"],
@@ -115,6 +120,7 @@ let array = [
 // Hiển thị câu hỏi và câu trả lời
 function disPlay(num) {
     document.getElementById('question').innerHTML = num.content
+
     for (let i = 0; i < 4 ; i++) {
         document.getElementById('cau' + (i + 1)).innerHTML = num.answer[i];
     }
@@ -131,8 +137,10 @@ function checkTrueFalse(id) {
         nextQuestion(count);
         count++;
         document.getElementById('result').innerHTML =(array[count].point);
+        sound.play()
         alert('Khá quá nhờ!');
     } else {
+        sound2.play()
         alert("Sai rồi bạn êi")
     }
 }
